@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environment
+.env
+.venv/
+venv/
+
+# Database
+*.db
+*.sqlite3
+
+# Models (tracked via Git LFS or regenerated)
+*.pkl
+
+# Logs & Temp
+*.log
+session.json
+.coverage
+htmlcov/
+
+# IDE & Tools
+.cursor/
+.antigravity/
+.gemini/
+.idea/
+.vscode/
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Airflow
+airflow/logs/
+airflow/airflow.db
