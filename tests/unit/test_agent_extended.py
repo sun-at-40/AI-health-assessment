@@ -8,6 +8,7 @@ from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
 from backend.agent import (
     CustomGeminiWrapper, 
+    get_best_available_model,
     tavily_search, 
     supervisor_node, 
     guardrail_node,
@@ -96,6 +97,14 @@ class TestCustomGeminiWrapper:
             
             assert isinstance(result, AIMessage)
             assert "Error" in result.content
+
+
+class TestModelSelection:
+    """Tests for Gemini model discovery fallback behavior."""
+
+    def test_uses_current_flash_model_when_discovery_fails(self):
+        with patch("backend.agent.genai.list_models", side_effect=Exception("API unavailable")):
+            assert get_best_available_model("real-key") == "models/gemini-2.5-flash"
 
 
 class TestTavilySearch:

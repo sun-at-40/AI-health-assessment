@@ -130,7 +130,7 @@ def get_best_available_model(api_key: str):
     except Exception as e:
         logger.error(f"Model discovery failed: {e}")
         
-    return "models/gemini-1.5-flash" # Safe default
+    return "models/gemini-2.5-flash" # Safe default
 
 # Global instance with dynamic selection
 selected_model = get_best_available_model(GOOGLE_API_KEY)
